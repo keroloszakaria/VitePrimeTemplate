@@ -1,0 +1,90 @@
+html,
+body {
+  background-color: var(--bg);
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  overflow: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+.swal2-container {
+  z-index: 99999;
+}
+
+.p-select-overlay {
+  border: none !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  .p-select-list {
+    background-color: #fff;
+  }
+  .p-select-option {
+    color: #333;
+  }
+  .p-select-option.p-select-option-selected {
+    color: var(--p-primary-color) !important;
+  }
+  .p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {
+    color: #333;
+  }
+}
+
+.p-popover {
+  background-color: #ffffff !important;
+  border: 2px solid #f26f88 !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  &::before,
+  &::after {
+    content: none !important;
+  }
+  .p-popover-content {
+    padding: 0;
+  }
+}
+
+.custom-scroll {
+  &::-webkit-scrollbar {
+    width: 8px; /* width of the entire scrollbar */
+  }
+  &::-webkit-scrollbar-track {
+    background: #eee; /* color of the tracking area */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--main-color); /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+  }
+}
+
+.p-datatable-table-container,
+.p-datatable {
+  min-height: inherit;
+}
+
+.custom-filter {
+  background: transparent !important;
+  box-shadow: none !important;
+  width: 30px;
+  .p-select-label {
+    display: none;
+  }
+}
+
+.p-dialog-header-actions {
+  margin-left: auto;
+}
+
+.p-select-open {
+  .p-select-dropdown {
+    rotate: 180deg;
+  }
+}
+.p-select-dropdown {
+  transition: 0.4s;
+}
