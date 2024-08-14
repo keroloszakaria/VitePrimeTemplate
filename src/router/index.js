@@ -4,13 +4,13 @@ const routes = [
   {
     path: "/",
     name: "main",
-    component: () => import("../layouts/MainLayout.vue"),
+    component: () => import("@/layouts/MainLayout.vue"),
     meta: {},
     children: [
       {
         path: "/",
         name: "home",
-        component: () => import("../views/HomeView.vue"),
+        component: () => import("@/views/HomeView.vue"),
         meta: {},
       },
     ],
@@ -18,7 +18,7 @@ const routes = [
   {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
-    component: () => import("../layouts/404.vue"),
+    component: () => import("@/layouts/404.vue"),
     meta: {},
   },
 ];
