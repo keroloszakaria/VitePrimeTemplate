@@ -1,6 +1,6 @@
 // Abstraction
 @import "abstracts/mixins";
-@import "abstracts/variables";
+@import "primevue/variables";
 @import "abstracts/fonts";
 
 // Base
@@ -10,3 +10,4 @@
 // Components
 @import "components/container";
 @import "components/card";
+@import "components/grid";

@@ -1,0 +1,8 @@
+{
+  "FIELDS": {
+    "WEAK": "Weak",
+    "MEDIUM": "Medium",
+    "STRONG": "Strong",
+    "PROMPT": "Prompt"
+  }
+}

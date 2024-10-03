@@ -1,0 +1,102 @@
+@media (prefers-color-scheme: dark) {
+  .dark {
+    :root {
+      --primary-color: #000 !important;
+      --surface-0: #292e32 !important;
+      --slate-200: #1a1d21 !important;
+      --slate-700: #fff !important;
+    }
+  }
+}
+
+/* Define light theme */
+:root {
+  --primary: #29abe2;
+  --primary_light: #cae8f4;
+  --bg: #f8fafc;
+  --title: #4b465c;
+  --label: #111827;
+  --border-color: #0caf60;
+  --btn-disabled: #f1f2f4;
+  --btn-disabled-text: #a0aec0;
+  --white: #fff;
+  --charts: #ffffff;
+  --green: #06d6a0;
+  --sideItem: #6f6b7d;
+  --invert: #fff;
+  --on-surface: #5d596c;
+  --error: #f27474;
+  --error_light: #ffc7c7;
+  --success: #a5dc86;
+  --warning: #f8bb86;
+  --info: #3fc3ee;
+  --text_400: #667085;
+  --text_500: #475467;
+  --text_600: #101828;
+  --text_700: #637381;
+  --text_800: #414141;
+  --background: #fff;
+  --invert_bg: #1e1e1e;
+  --sidebar_bg: #fff;
+  --sidebar_border: #e6e7ec;
+  --sidebar_list_bg: #ffffff;
+  --sidebar_list_item: #7c7f90;
+  --input_bg: #fafafa;
+  --input_placeholder: #b0b0b0;
+  --input_border: #d0d5dd;
+  --input-focus: #29abe2;
+
+  // Font
+  --font_primary: "Roboto", sans-serif;
+  --font_secondary: "Poppins", sans-serif;
+  --font-size: 16px;
+}
+
+/* Define dark theme */
+.dark {
+  --primary: #29abe2;
+  --primary_light: #8f91a3;
+  --bg: #1a1d21;
+  --title: #e0e0e0;
+  --label: #e0e0e0;
+  --border-color: #0caf60;
+  --btn-disabled: #2d2d2d;
+  --btn-disabled-text: #52575d;
+  --white: #1e1e1e;
+  --charts: #292e32;
+  --green: #06d6a0;
+  --sideItem: #8f91a3;
+  --invert: #000000;
+  --on-surface: #a6a6a6;
+  --error: #f27474;
+  --error_light: #ffc7c7;
+  --success: #a5dc86;
+  --warning: #f8bb86;
+  --info: #3fc3ee;
+  --text_400: #a3a3a3;
+  --text_500: #b3b3b3;
+  --text_600: #e0e0e0;
+  --background: #1a1d21;
+  --invert_bg: #fff;
+  --sidebar_bg: #292e32;
+  --sidebar_border: #444444;
+  --sidebar_list_bg: #292e32;
+  --input_bg: #262a2f;
+  --input_placeholder: #b0b0b0;
+  --input_border: #2a2f34;
+  --input-focus: #29abe2;
+  --sidebar_list_item: #fff;
+
+  --primary-color: #000 !important;
+  --surface-0: #292e32 !important;
+  --slate-200: #1a1d21 !important;
+  --slate-700: #fff !important;
+}
+
+:lang(en) {
+  --font_primary: "Roboto", sans-serif;
+}
+
+:lang(ar) {
+  --font_primary: "Alexandria", sans-serif;
+}

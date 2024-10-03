@@ -1,0 +1,59 @@
+::v-deep {
+  label {
+    font-size: 0.9rem;
+    color: var(--label);
+    &.required {
+      &::after {
+        content: "*";
+        color: var(--error);
+        margin-inline-start: 0.25rem;
+      }
+    }
+  }
+
+  .p-inputtext,
+  .p-togglebutton,
+  .p-select {
+    height: 39px;
+    width: 100%;
+    background: var(--input_bg) !important;
+    border: 1px solid var(--input_border) !important;
+    color: var(--label);
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    &::placeholder {
+      color: var(--input_placeholder);
+      font-size: 0.875rem;
+    }
+
+    &:focus {
+      border-color: var(--input-focus) !important;
+    }
+    &::before {
+      background-color: var(--background) !important;
+    }
+    .p-select-label {
+      color: var(--label) !important;
+      padding: 0.5rem 0.9rem;
+      &.p-placeholder {
+        color: var(--input_placeholder) !important;
+        font-size: 0.875rem !important;
+      }
+    }
+    &-checked {
+      &::before {
+        background-color: var(--primary) !important;
+      }
+    }
+  }
+  .p-inputtext,
+  .p-togglebutton {
+    padding: 0.5rem 0.9rem;
+  }
+}
+
+.field-error {
+  color: var(--error);
+  font-size: 0.8rem;
+  margin-top: 0.1rem;
+}

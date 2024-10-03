@@ -1,0 +1,63 @@
+// Variables for grid system
+$grid-columns: 12;
+$gutter-width: 30px; // Total gutter width (15px on each side)
+
+// Container
+.container {
+  width: 100%;
+  padding-right: $gutter-width / 2;
+  padding-left: $gutter-width / 2;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Row
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -($gutter-width / 2);
+  margin-left: -($gutter-width / 2);
+}
+
+// Columns
+@mixin make-col($size) {
+  flex: 0 0 percentage($size / $grid-columns);
+  max-width: percentage($size / $grid-columns);
+  padding-right: $gutter-width / 2;
+  padding-left: $gutter-width / 2;
+}
+
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    @include make-col($i);
+  }
+}
+
+// Offsetting Columns
+@mixin make-offset($size) {
+  margin-left: percentage($size / $grid-columns);
+}
+
+@for $i from 1 through ($grid-columns - 1) {
+  .offset-#{$i} {
+    @include make-offset($i);
+  }
+}
+
+// Responsive breakpoints
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+@each $breakpoint, $width in $breakpoints {
+  @media (min-width: $width) {
+    @for $i from 1 through $grid-columns {
+      .col-#{$breakpoint}-#{$i} {
+        @include make-col($i);
+      }
+    }
+  }
+}
