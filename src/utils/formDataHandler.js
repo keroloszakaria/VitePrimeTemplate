@@ -63,6 +63,5 @@ export function objectToQueryString(obj) {
 }
 
 export function getFieldByKey(schema, key) {
-  console.log(schema);
   return schema.find((field) => field.key === key);
 }

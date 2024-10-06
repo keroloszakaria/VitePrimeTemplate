@@ -12,7 +12,6 @@ function loadLocaleMessages() {
       messages[locale] = locales[path];
     }
   }
-  console.log(messages);
   return messages;
 }
 

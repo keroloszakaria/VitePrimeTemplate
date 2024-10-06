@@ -11,11 +11,11 @@
         :placeholder="$t(placeholder)"
         toggleMask
         :feedback="true"
-        autocomplete="new-password"
         :weakLabel="$t('FIELDS.WEAK')"
         :mediumLabel="$t('FIELDS.MEDIUM')"
         :strongLabel="$t('FIELDS.STRONG')"
         :promptLabel="$t('FIELDS.PROMPT')"
+        :inputProps="{ autocomplete: true }"
       />
     </div>
   </div>

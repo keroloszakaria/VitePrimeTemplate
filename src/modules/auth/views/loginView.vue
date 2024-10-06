@@ -1,5 +1,5 @@
 <template>
-  <div class="contianer">
+  <div class="container">
     <div class="row">
       <div class="col-8">
         <Image
@@ -18,6 +18,7 @@
               <p class="text-[1rem] text-primary font-[500]">تسجيل الدخول</p>
             </div>
             <GenericForm :schema="schema" @submit="onSubmit">
+              <template #remember-me> </template>
               <template v-slot:submit>
                 <Button
                   type="primary"
@@ -40,7 +41,12 @@ import Button from "@/components/common/Button.vue";
 import Image from "primevue/image";
 import loginBck from "../../../assets/images/login_bck.svg";
 import GenericForm from "@/components/common/GenericForm/index.vue";
-import { createTextField, createPasswordField } from "@/utils/fieldUtils";
+import { transformSchemaToObject } from "@/utils/formDataHandler.js";
+import {
+  createCheckBoxField,
+  createTextField,
+  createPasswordField,
+} from "@/utils/fieldUtils";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
@@ -49,15 +55,27 @@ const schema = ref([
   createTextField({
     t,
     key: "email",
-    label: "EMAIL", // Refers to `FIELDS.EMAIL` in your i18n messages
+    label: "EMAIL",
     isEmail: true,
     cols: { md: 12, lg: 12 },
   }),
   createPasswordField({
-    t, // Pass t function correctly here
+    t,
     key: "password",
     label: "PASSWORD",
     cols: { md: 12, lg: 12 },
   }),
+  createCheckBoxField({
+    t,
+    key: "remember-me",
+    label: "REMEMBER_ME",
+    class: "w-full",
+    required: false,
+  }),
 ]);
+
+const onSubmit = (data) => {
+  let payload = transformSchemaToObject(data);
+  console.log(payload);
+};
 </script>

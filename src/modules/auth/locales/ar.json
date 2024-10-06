@@ -1,7 +1,12 @@
 {
   "FIELDS": {
     "EMAIL": "البريد الالكترونى",
-    "PASSWORD": "كلمة المرور"
+    "PASSWORD": "كلمة المرور",
+    "REMEMBER_ME": "تذكرني",
+    "WEAK": "ضعيف",
+    "MEDIUM": "متوسط",
+    "STRONG": "قوي",
+    "PROMPT": "متأكد"
   },
   "PLACEHOLDER": {
     "EMAIL": "ادخل البريد الالكترونى",

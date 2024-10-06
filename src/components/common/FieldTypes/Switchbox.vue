@@ -1,21 +1,21 @@
 <template lang="">
-  <div class="flex gap-2">
-    <Checkbox
-      :inputId="label"
-      v-model="innerValue"
-      :value="checkedValue"
-      :name="name"
-      binary
-      variant="filled"
-    />
-    <label :for="label" :class="required ? 'required' : ''">{{
-      $t(label)
-    }}</label>
+  <div class="w-full">
+    <div class="flex flex-col gap-1">
+      <label :for="label" :class="required ? 'required' : ''">{{
+        $t(label)
+      }}</label>
+      <ToggleButton
+        v-model="innerValue"
+        class="w-30"
+        onLabel="On"
+        offLabel="Off"
+      />
+    </div>
   </div>
 </template>
 <script setup>
 import { ref, watch } from "vue";
-import Checkbox from "primevue/checkbox";
+import ToggleButton from "primevue/togglebutton";
 
 const checked = ref(false);
 const props = defineProps({
@@ -25,8 +25,6 @@ const props = defineProps({
   icon: String,
   required: Boolean,
   rules: Array,
-  name: String,
-  checkedValue: [Boolean, Number, String],
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -34,6 +32,7 @@ const emit = defineEmits(["update:modelValue"]);
 const innerValue = ref(props.modelValue);
 
 watch(innerValue, (newVal) => {
+  console.log(newVal);
   emit("update:modelValue", newVal);
 });
 </script>

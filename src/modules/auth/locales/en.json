@@ -1,7 +1,12 @@
 {
   "FIELDS": {
     "EMAIL": "Email",
-    "PASSWORD": "Password"
+    "PASSWORD": "Password",
+    "REMEMBER_ME": "Remember me",
+    "WEAK": "Weak",
+    "MEDIUM": "Medium",
+    "STRONG": "Strong",
+    "PROMPT": "Prompt"
   },
   "PLACEHOLDER": {
     "EMAIL": "Enter email",

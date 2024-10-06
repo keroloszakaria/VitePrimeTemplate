@@ -50,11 +50,8 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const moduleName = to.meta.moduleName;
-  console.log(moduleName);
   const locale = storage.get("locale") || import.meta.env.VITE_LOCALE;
-
   await loadModuleLocales(moduleName, locale);
-
   next();
 });
 

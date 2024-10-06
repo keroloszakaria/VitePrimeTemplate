@@ -43,6 +43,7 @@ import Number from "@/components/common/FieldTypes/Number.vue";
 import Phone from "@/components/common/FieldTypes/Phone.vue";
 import Password from "@/components/common/FieldTypes/Password.vue";
 import Date from "@/components/common/FieldTypes/Date.vue";
+import Switchbox from "@/components/common/FieldTypes/Switchbox.vue";
 import Checkbox from "@/components/common/FieldTypes/Checkbox.vue";
 import Select from "@/components/common/FieldTypes/Select.vue";
 import MultiSelect from "@/components/common/FieldTypes/MultiSelect.vue";
@@ -88,6 +89,7 @@ const getFieldComponent = (type) => {
     phone: Phone,
     date: Date,
     password: Password,
+    switchbox: Switchbox,
     checkbox: Checkbox,
     select: Select,
     multiselect: MultiSelect,
