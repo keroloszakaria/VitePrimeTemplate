@@ -54,10 +54,11 @@ export const createNumberField = ({
 });
 
 export const createPasswordField = ({
-  t, // t must be passed here
+  t,
   key,
   label,
   required = true,
+  minLength = 6,
   cols = { md: 12, lg: 12 },
 }) => ({
   key,
@@ -68,7 +69,7 @@ export const createPasswordField = ({
   required: required,
   rules: [
     ...(required ? [requiredRule(t, t(`FIELDS.${label}`))] : []),
-    minLengthRule(t, 12),
+    minLengthRule(t, minLength),
   ],
   cols: cols,
 });

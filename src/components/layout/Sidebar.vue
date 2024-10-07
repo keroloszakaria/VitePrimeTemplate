@@ -1,45 +1,81 @@
 <template>
-  <div class="card flex justify-center h-screen">
-    <Menu :model="items" class="w-full md:w-60">
+  <div class="card flex justify-center">
+    <Menu
+      :model="sidebarLinks"
+      class="w-full md:w-60 h-screen flex flex-col justify-between"
+    >
       <template #start>
-        <span class="inline-flex items-center gap-1 px-2 py-2">
-          <svg
-            width="35"
-            height="40"
-            viewBox="0 0 35 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-8"
-          >
-            <path
-              d="M25.87 18.05L23.16 17.45L25.27 20.46V29.78L32.49 23.76V13.53L29.18 14.73L25.87 18.04V18.05ZM25.27 35.49L29.18 31.58V27.67L25.27 30.98V35.49ZM20.16 17.14H20.03H20.17H20.16ZM30.1 5.19L34.89 4.81L33.08 12.33L24.1 15.67L30.08 5.2L30.1 5.19ZM5.72 14.74L2.41 13.54V23.77L9.63 29.79V20.47L11.74 17.46L9.03 18.06L5.72 14.75V14.74ZM9.63 30.98L5.72 27.67V31.58L9.63 35.49V30.98ZM4.8 5.2L10.78 15.67L1.81 12.33L0 4.81L4.79 5.19L4.8 5.2ZM24.37 21.05V34.59L22.56 37.29L20.46 39.4H14.44L12.34 37.29L10.53 34.59V21.05L12.42 18.23L17.45 26.8L22.48 18.23L24.37 21.05ZM22.85 0L22.57 0.69L17.45 13.08L12.33 0.69L12.05 0H22.85Z"
-              fill="var(--p-primary-color)"
-            />
-            <path
-              d="M30.69 4.21L24.37 4.81L22.57 0.69L22.86 0H26.48L30.69 4.21ZM23.75 5.67L22.66 3.08L18.05 14.24V17.14H19.7H20.03H20.16H20.2L24.1 15.7L30.11 5.19L23.75 5.67ZM4.21002 4.21L10.53 4.81L12.33 0.69L12.05 0H8.43002L4.22002 4.21H4.21002ZM21.9 17.4L20.6 18.2H14.3L13 17.4L12.4 18.2L12.42 18.23L17.45 26.8L22.48 18.23L22.5 18.2L21.9 17.4ZM4.79002 5.19L10.8 15.7L14.7 17.14H14.74H15.2H16.85V14.24L12.24 3.09L11.15 5.68L4.79002 5.2V5.19Z"
-              fill="var(--p-text-color)"
-            />
-          </svg>
-          <span class="text-xl font-semibold"
-            >PRIME<span class="text-primary">APP</span></span
-          >
-        </span>
+        <div class="flex items-center gap-[10px] h-[72px] p-[1rem]">
+          <span v-html="icons.logo"></span>
+          <span class="text-xl font-semibold">
+            <span class="text-primary">واكب</span>
+          </span>
+        </div>
       </template>
       <template #submenulabel="{ item }">
         <span class="text-primary font-bold">{{ item.label }}</span>
       </template>
       <template #item="{ item, props }">
-        <a v-ripple class="flex items-center" v-bind="props.action">
-          <span :class="item.icon" />
-          <span>{{ item.label }}</span>
+        <div
+          v-if="item.children"
+          class="flex flex-col w-full items-center p-menu-item-link"
+        >
+          <div
+            class="flex items-center justify-between w-full gap-[.5rem] cursor-pointer"
+            @click="toggleDropdown(item)"
+          >
+            <span v-if="item.customIcon" v-html="item.icon"></span>
+            <i v-else :class="item.icon" />
+            <span>{{ $t(item.label) }}</span>
+            <i
+              class="fa fa-fw ml-auto"
+              :class="{
+                'fa-angle-down': !isDropdownOpen(item),
+                'fa-angle-up': isDropdownOpen(item),
+              }"
+            />
+          </div>
+          <transition
+            name="fade-slide"
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @leave="leave"
+          >
+            <!-- Render children as a dropdown when open -->
+            <ul v-if="isDropdownOpen(item)" class="w-full">
+              <li v-for="child in item.children" :key="child.label">
+                <router-link
+                  :to="child.to || '#'"
+                  class="flex items-center gap-[.5rem] p-menu-item-link hover:text-primary transition-all"
+                >
+                  <i :class="child.icon" />
+                  <span>{{ $t(child.label) }}</span>
+                </router-link>
+              </li>
+            </ul>
+          </transition>
+        </div>
+
+        <router-link
+          v-if="!item.children"
+          :to="item.to || '#'"
+          v-ripple
+          class="flex items-center"
+          v-bind="props.action"
+        >
+          <span v-if="item.customIcon" v-html="item.icon"></span>
+          <i v-else :class="item.icon" />
+          <span>{{ $t(item.label) }}</span>
           <Badge v-if="item.badge" class="ml-auto" :value="item.badge" />
           <span
             v-if="item.shortcut"
             class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1"
             >{{ item.shortcut }}</span
           >
-        </a>
+        </router-link>
       </template>
+
+      <!-- End template (e.g., User Avatar) -->
       <template #end>
         <button
           v-ripple
@@ -62,51 +98,66 @@
 
 <script setup>
 import { ref } from "vue";
+import Menu from "primevue/menu";
 import Avatar from "primevue/avatar";
 import Badge from "primevue/badge";
-import Menu from "primevue/menu";
+import { sidebarLinks } from "@/data/sidebarLinks";
 
-const items = ref([
-  {
-    separator: true,
-  },
-  {
-    label: "Documents",
-    items: [
-      {
-        label: "New",
-        icon: "pi pi-plus",
-        shortcut: "⌘+N",
-      },
-      {
-        label: "Search",
-        icon: "pi pi-search",
-        shortcut: "⌘+S",
-      },
-    ],
-  },
-  {
-    label: "Profile",
-    items: [
-      {
-        label: "Settings",
-        icon: "pi pi-cog",
-        shortcut: "⌘+O",
-      },
-      {
-        label: "Messages",
-        icon: "pi pi-inbox",
-        badge: 2,
-      },
-      {
-        label: "Logout",
-        icon: "pi pi-sign-out",
-        shortcut: "⌘+Q",
-      },
-    ],
-  },
-  {
-    separator: true,
-  },
-]);
+const openDropdowns = ref([]);
+
+const isDropdownOpen = (item) => {
+  return openDropdowns.value.includes(item.label);
+};
+
+// Toggle dropdown visibility
+const toggleDropdown = (item) => {
+  const index = openDropdowns.value.indexOf(item.label);
+  if (index === -1) {
+    openDropdowns.value.push(item.label);
+  } else {
+    openDropdowns.value.splice(index, 1);
+  }
+};
+
+const beforeEnter = (el) => {
+  el.style.height = 0;
+};
+const enter = (el) => {
+  el.style.height = `${el.scrollHeight}px`;
+  el.style.transition = "height 300ms ease";
+};
+const leave = (el) => {
+  el.style.height = `${el.scrollHeight}px`;
+  requestAnimationFrame(() => {
+    el.style.height = 0;
+    el.style.transition = "height 300ms ease";
+  });
+};
 </script>
+
+<style lang="scss" scoped>
+:deep(.p-menu-list) {
+  flex: 1;
+  overflow: auto;
+  max-height: calc(100vh - 40px - 70px);
+}
+
+.router-link-exact-active {
+  color: var(--primary);
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  overflow: hidden;
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.fade-slide-enter-to,
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>

@@ -2,7 +2,7 @@
   <Button
     :icon="icon"
     :type="action"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     :severity="type"
     :label="$t(label)"
     :iconPos="iconPosition"

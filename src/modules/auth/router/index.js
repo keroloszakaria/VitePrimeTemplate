@@ -5,6 +5,7 @@ export default [
     component: () => import("../views/LoginView.vue"),
     meta: {
       moduleName: "auth",
+      requiresAuth: false,
     },
   },
   {
@@ -13,6 +14,7 @@ export default [
     component: () => import("../views/RegisterView.vue"),
     meta: {
       moduleName: "auth",
+      requiresAuth: false,
     },
   },
   {
@@ -21,6 +23,7 @@ export default [
     component: () => import("../views/ForgotPasswordView.vue"),
     meta: {
       moduleName: "auth",
+      requiresAuth: false,
     },
   },
 ];

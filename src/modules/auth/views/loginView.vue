@@ -20,7 +20,9 @@
             <GenericForm :schema="schema" @submit="onSubmit">
               <template #remember-me> </template>
               <template v-slot:submit>
+                {{ isLoading }}
                 <Button
+                  :loading="isLoading"
                   type="primary"
                   label="BUTTONS.LOGIN"
                   action="submit"
@@ -48,8 +50,10 @@ import {
   createPasswordField,
 } from "@/utils/fieldUtils";
 import { useI18n } from "vue-i18n";
+import { useAuthStore } from "../store/auth";
 
 const { t } = useI18n();
+const { login, isLoading, error } = useAuthStore();
 
 const schema = ref([
   createTextField({
@@ -64,6 +68,7 @@ const schema = ref([
     key: "password",
     label: "PASSWORD",
     cols: { md: 12, lg: 12 },
+    minLength: 4,
   }),
   createCheckBoxField({
     t,
@@ -74,8 +79,8 @@ const schema = ref([
   }),
 ]);
 
-const onSubmit = (data) => {
-  let payload = transformSchemaToObject(data);
-  console.log(payload);
+const onSubmit = async (formData) => {
+  const payload = transformSchemaToObject(formData);
+  await login(payload);
 };
 </script>

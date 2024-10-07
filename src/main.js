@@ -7,6 +7,9 @@ import Aura from "@primevue/themes/aura";
 import Ripple from "primevue/ripple";
 import FocusTrap from "primevue/focustrap";
 
+// Custom Icon
+import icons from "@/plugins/icons";
+
 // Localization
 import i18n from "@/utils/i18n";
 globalThis.t = i18n.global.t;
@@ -27,6 +30,7 @@ app.use(i18n);
 
 app.directive("ripple", Ripple);
 app.directive("focustrap", FocusTrap);
+app.use(icons);
 
 app.use(PrimeVue, {
   theme: {
