@@ -19,6 +19,7 @@ export const sidebarLinks = [
         label: "المسئوولين",
         icon: icons.users,
         customIcon: true,
+        to: "/users",
       },
       {
         label: "الإعدادات",

@@ -1,14 +1,14 @@
 <template>
-  <main class="flex">
+  <div class="flex">
     <Sidebar />
-    <div class="flex flex-col flex-1">
+    <main class="flex flex-col flex-1 px-[1.5rem]">
       <Navbar />
+      <!-- Main content -->
       <router-view />
-    </div>
-  </main>
+    </main>
+  </div>
 </template>
 <script setup>
 import Navbar from "@/components/layout/Navbar.vue";
 import Sidebar from "@/components/layout/Sidebar.vue";
 </script>
-<style lang=""></style>

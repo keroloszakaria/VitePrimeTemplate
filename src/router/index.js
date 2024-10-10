@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Auth from "@/modules/auth/router/index.js";
+import auth from "@/modules/auth/router/index.js";
+import users from "@/modules/users/router/index.js";
 import loadModuleLocales from "@/utils/loadModuleLocales";
 import storage from "@/composables/useStorage";
 import { authGuard } from "../modules/auth/middleware/auth";
 
 const routes = [
-  ...Auth,
+  ...auth,
   {
     path: "/dashboard",
     name: "main",
@@ -16,11 +17,12 @@ const routes = [
     },
     children: [
       {
-        path: "/",
+        path: "/dashboard",
         name: "home",
         component: () => import("@/views/HomeView.vue"),
         meta: {},
       },
+      ...users,
     ],
   },
   {

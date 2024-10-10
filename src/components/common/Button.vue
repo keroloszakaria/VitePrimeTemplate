@@ -1,5 +1,21 @@
 <template lang="">
   <Button
+    v-if="to"
+    :icon="icon"
+    :type="action"
+    :disabled="disabled || loading"
+    :severity="type"
+    :iconPos="iconPosition"
+    :loading="loading"
+    :to="to"
+    @click="handleClick"
+  >
+    <router-link :to="to">
+      {{ $t(label) }}
+    </router-link>
+  </Button>
+  <Button
+    v-else
     :icon="icon"
     :type="action"
     :disabled="disabled || loading"
@@ -17,6 +33,10 @@ import Button from "primevue/button";
 import { useRouter } from "vue-router";
 
 const props = defineProps({
+  to: {
+    type: String,
+    default: "",
+  },
   label: {
     type: String,
     default: "",

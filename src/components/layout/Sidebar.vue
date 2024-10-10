@@ -1,5 +1,5 @@
 <template>
-  <div class="card flex justify-center">
+  <aside class="card flex justify-center shadow-[0px_2px_4px_0px_#A5A3AE4D]">
     <Menu
       :model="sidebarLinks"
       class="w-full md:w-60 h-screen flex flex-col justify-between"
@@ -93,7 +93,7 @@
         </button>
       </template>
     </Menu>
-  </div>
+  </aside>
 </template>
 
 <script setup>

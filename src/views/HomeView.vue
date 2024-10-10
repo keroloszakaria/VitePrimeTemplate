@@ -1,7 +1,14 @@
-<template lang="">
-  <div>Home View</div>
+<template>
+  <Breadcrumb :items="breadcrumbItems" />
 </template>
-<script>
-export default {};
+
+<script setup>
+import Breadcrumb from "@/components/common/Breadcrumb.vue";
+
+const breadcrumbItems = [
+  { label: "الصفحة الرئيسية", route: "/" },
+  { label: "المناسبات" },
+];
 </script>
-<style lang=""></style>
+
+<style lang="scss" scoped></style>

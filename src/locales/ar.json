@@ -4,5 +4,8 @@
     "MEDIUM": "Medium",
     "STRONG": "Strong",
     "PROMPT": "Prompt"
+  },
+  "SIDEBAR": {
+    "DASHBOARD": "لوحة التحكم"
   }
 }

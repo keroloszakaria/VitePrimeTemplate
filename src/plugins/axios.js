@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getCookie } from "@/composables/useCookies";
 import storage from "@/composables/useStorage";
+import { useAuthStore } from "../modules/auth/store/auth";
 
 const instance = axios.create({
   isFile: false,
@@ -13,12 +14,8 @@ const instance = axios.create({
 });
 instance.interceptors.request.use(
   (config) => {
-    console.log(config);
     const token = getCookie("token") || null;
     const locale = storage.get("locale") || import.meta.env.VITE_LOCALE;
-    console.log("Token: ", token);
-    console.log("Locale: ", locale);
-
     config.headers["Accept-language"] = locale;
     if (token) config.headers["Authorization"] = "Bearer " + token;
     if (config.isFile) config.headers["Content-Type"] = "multipart/form-data";
@@ -36,7 +33,7 @@ instance.interceptors.response.use(
   (error) => {
     switch (error.response?.status) {
       case 401: // Unauthorized
-        console.log("Unauthorized");
+        useAuthStore().logout();
         break;
       case 403: // Forbidden
         console.log("Not Have Permissions");

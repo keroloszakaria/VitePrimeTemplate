@@ -16,6 +16,7 @@ export default {
         },
 
         title: "var(--title)",
+        desc: "var(--desc)",
 
         label: "var(--label)",
         "border-color": "var(--border-color)",

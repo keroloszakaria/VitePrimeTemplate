@@ -1,25 +1,12 @@
 <template lang="">
   <div class="flex gap-4">
     <Button
-      v-if="actions.includes('view')"
-      icon="far fa-fw fa-eye"
-      class="!w-fit !text-label"
-      type="icon-only"
-      @click="emit('view')"
-    />
-    <Button
-      v-if="actions.includes('edit')"
-      icon="far fa-fw fa-pen"
-      class="!w-fit !text-label"
-      type="icon-only"
-      @click="emit('edit')"
-    />
-    <Button
-      v-if="actions.includes('delete')"
-      icon="far fa-fw fa-trash"
-      class="!w-fit !text-[#D92D20]"
-      type="icon-only"
-      @click="emit('delete')"
+      v-for="(action, index) in actions"
+      :key="action.label"
+      :class="action.classList"
+      :type="action.type"
+      :icon="action.icon"
+      @click="action.callback(row)"
     />
   </div>
 </template>
@@ -28,8 +15,7 @@ import Button from "@/components/common/Button.vue";
 
 const props = defineProps({
   actions: Array,
+  row: Object,
 });
-
-const emit = defineEmits(["view", "edit", "delete"]);
 </script>
 <style lang=""></style>
