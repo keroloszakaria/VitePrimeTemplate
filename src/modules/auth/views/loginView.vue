@@ -20,11 +20,10 @@
             <GenericForm :schema="schema" @submit="onSubmit">
               <template #remember-me> </template>
               <template v-slot:submit>
-                {{ isLoading }}
                 <Button
                   :loading="isLoading"
                   type="primary"
-                  label="BUTTONS.LOGIN"
+                  label="AUTH.BUTTONS.LOGIN"
                   action="submit"
                   class="w-full"
                 />
@@ -61,12 +60,14 @@ const schema = ref([
     key: "email",
     label: "EMAIL",
     isEmail: true,
+    module: "AUTH",
     cols: { md: 12, lg: 12 },
   }),
   createPasswordField({
     t,
     key: "password",
     label: "PASSWORD",
+    module: "AUTH",
     cols: { md: 12, lg: 12 },
     minLength: 4,
   }),
@@ -75,6 +76,7 @@ const schema = ref([
     key: "remember-me",
     label: "REMEMBER_ME",
     class: "w-full",
+    module: "AUTH",
     required: false,
   }),
 ]);

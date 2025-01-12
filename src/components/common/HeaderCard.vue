@@ -6,7 +6,7 @@
       <img class="w-full object-contain" :src="image" alt="" />
     </div>
 
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 flex-1">
       <h3 class="text-title text-[1.1rem] font-[600]">{{ $t(title) }}</h3>
       <p class="text-desc text-[.9rem] font-[500] mb-2">
         {{ $t(description) }}

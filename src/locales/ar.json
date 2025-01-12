@@ -1,11 +1,61 @@
 {
+  "AUTH": {
+    "FIELDS": {
+      "EMAIL": "البريد الالكترونى",
+      "PASSWORD": "كلمة المرور",
+      "REMEMBER_ME": "تذكرني",
+      "WEAK": "ضعيف",
+      "MEDIUM": "متوسط",
+      "STRONG": "قوي",
+      "PROMPT": "متأكد"
+    },
+    "PLACEHOLDER": {
+      "EMAIL": "ادخل البريد الالكترونى",
+      "PASSWORD": "ادخل كلمة المرور"
+    },
+    "BUTTONS": {
+      "LOGIN": "تسجيل الدخول",
+      "FORGOT_PASSWORD": "نسيت كلمة المرور؟",
+      "SIGNUP": "انشاء حساب",
+      "RESET_PASSWORD": "اعادة تعيين كلمة المرور",
+      "BACK_TO_LOGIN": "الرجوع لتسجيل الدخول",
+      "CONFIRM": "تأكيد"
+    }
+  },
+  "USERS": {
+    "FIELDS": {
+      "ID": "الرقم التعريفى",
+      "NAME": "الاسم",
+      "EMAIL": "البريد الالكترونى",
+      "PHONE": "الهاتف",
+      "ACTIONS": "الاجراءات"
+    },
+    "BUTTONS": {
+      "ADD_NEW_USERS": "إضافة مسئوول جديد"
+    },
+    "ALL_USERS": "كل المسئوولين",
+    "ADD_USER": "إضافة مسئوول",
+    "CAN_ADD_USER": "يمكنك اضافة مسئوول جديد",
+    "TOTAL_USERS": "إجمالى المسئوولين",
+    "NEW_USERS": "المسئوولين الجدد",
+    "USER_NUMBER": "مسئوول {number}"
+  },
   "FIELDS": {
-    "WEAK": "Weak",
-    "MEDIUM": "Medium",
-    "STRONG": "Strong",
-    "PROMPT": "Prompt"
+    "WEAK": "ضعيف",
+    "MEDIUM": "متوسط",
+    "STRONG": "قوي",
+    "PROMPT": "متأكد"
+  },
+  "TABLE": {
+    "ID": "الرقم التعريفى",
+    "NAME": "الاسم",
+    "EMAIL": "البريد الالكترونى",
+    "PHONE": "الهاتف",
+    "ACTIONS": "الاجراءات"
   },
   "SIDEBAR": {
-    "DASHBOARD": "لوحة التحكم"
-  }
+    "DASHBOARD": "لوحة التحكم",
+    "USERS": "المسئوولين"
+  },
+  "TOTAL_RECORDS": "جميع السجلات"
 }

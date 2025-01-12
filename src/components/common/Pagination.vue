@@ -8,7 +8,7 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
   >
     <template #start="slotProps">
-      totalRecords:
+      {{ $t("TOTAL_RECORDS") }}:
       {{ slotProps.state.totalRecords }}
     </template>
   </Paginator>
